@@ -14,7 +14,7 @@ class MyNavBar extends StatelessWidget {
         color: Theme.of(context).colorScheme.inversePrimary,
         activeColor: Theme.of(context).colorScheme.inverseSurface,
 
-        // tabBackgroundColor: Theme.of(context).colorScheme.primary,
+        tabBackgroundColor: Theme.of(context).colorScheme.primary,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         tabBorderRadius: 10,
         onTabChange: (value) => onTabChange!(value),

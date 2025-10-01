@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:modern_chat_app/components/my_button.dart';
@@ -10,8 +11,9 @@ class RegisterPage extends StatelessWidget {
 
   TextEditingController emailController = TextEditingController();
   TextEditingController ConfirmPasswordController = TextEditingController();
-
   TextEditingController passwordController = TextEditingController();
+
+  void register() {}
 
   @override
   Widget build(BuildContext context) {
@@ -20,82 +22,93 @@ class RegisterPage extends StatelessWidget {
       appBar: AppBar(backgroundColor: Colors.transparent),
 
       body: Center(
-        child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              //icon
-              FaIcon(FontAwesomeIcons.message, size: 70),
-
-              SizedBox(height: 40),
-
-              //text
-              Text(
-                'Welcome, You made the right choice',
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
-              ),
-
-              SizedBox(height: 10),
-
-              //email textfield
-              MyTextfield(
-                controller: emailController,
-                hintText: 'Email',
-                obscureText: false,
-              ),
-
-              SizedBox(height: 10),
-
-              //password textfield
-              MyTextfield(
-                controller: passwordController,
-                hintText: 'Password',
-                obscureText: true,
-              ),
-
-              SizedBox(height: 10),
-
-              //Confirm password textfield
-              MyTextfield(
-                controller: ConfirmPasswordController,
-                hintText: 'Confirm Password',
-                obscureText: true,
-              ),
-
-              SizedBox(height: 20),
-
-              //login button
-              MyButton(text: 'Sign Up', onTap: () {}),
-
-              SizedBox(height: 10),
-
-              //register now
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Already have an account?",
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onPrimary,
-                    ),
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                //icon
+                CircleAvatar(
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  radius: 70,
+                  child: Icon(
+                    CupertinoIcons.chat_bubble_fill,
+                    size: 70,
+                    color: Theme.of(context).colorScheme.surface,
                   ),
-                  GestureDetector(
-                    onTap: onTap,
-                    child: Text(
-                      ' Login',
+                  // color: Colors.white,
+                ),
+
+                SizedBox(height: 40),
+
+                //text
+                Text(
+                  'Welcome, You made the right choice',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+
+                SizedBox(height: 20),
+
+                //email textfield
+                MyTextfield(
+                  controller: emailController,
+                  hintText: 'Email',
+                  obscureText: false,
+                ),
+
+                SizedBox(height: 10),
+
+                //password textfield
+                MyTextfield(
+                  controller: passwordController,
+                  hintText: 'Password',
+                  obscureText: true,
+                ),
+
+                SizedBox(height: 10),
+
+                //Confirm password textfield
+                MyTextfield(
+                  controller: ConfirmPasswordController,
+                  hintText: 'Confirm Password',
+                  obscureText: true,
+                ),
+
+                SizedBox(height: 25),
+
+                //login button
+                MyButton(text: 'Sign Up', onTap: () {}),
+
+                SizedBox(height: 25),
+
+                //register now
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Already have an account?",
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.onPrimary,
-                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    GestureDetector(
+                      onTap: onTap,
+                      child: Text(
+                        ' Login',
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
