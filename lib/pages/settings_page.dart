@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:modern_chat_app/services/theme/theme_prvider.dart';
+import 'package:provider/provider.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class ProfilePage extends StatelessWidget {
               backgroundColor: Theme.of(context).colorScheme.secondary,
               radius: 70,
               child: Icon(
-                CupertinoIcons.person,
+                CupertinoIcons.settings,
                 size: 70,
                 color: Theme.of(context).colorScheme.surface,
               ),
@@ -26,7 +28,7 @@ class ProfilePage extends StatelessWidget {
             SizedBox(height: 20),
 
             Text(
-              'Profile',
+              'Settings',
               style: TextStyle(
                 fontSize: 35,
                 color: Theme.of(context).colorScheme.onPrimary,
@@ -44,21 +46,38 @@ class ProfilePage extends StatelessWidget {
               child: Column(
                 children: [
                   ListTile(
-                    title: Text('Name'),
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
+                    leading: Icon(Icons.menu, size: 25),
+                    title: Text('Manage Chat'),
                   ),
                   SizedBox(height: 10),
 
                   ListTile(
-                    title: Text('Email'),
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
+                    leading: Icon(Icons.file_upload_outlined, size: 25),
+                    title: Text('Export Chat'),
                   ),
+
                   SizedBox(height: 10),
 
                   ListTile(
-                    title: Text('phone'),
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
+                    leading: Icon(Icons.color_lens_outlined, size: 25),
+                    title: Text('Dark mode'),
+                    trailing: CupertinoSwitch(
+                      value: Provider.of<ThemeProvider>(
+                        context,
+                        listen: false,
+                      ).isDarkMode,
+                      onChanged: (value) => Provider.of<ThemeProvider>(
+                        context,
+                        listen: false,
+                      ).toggleTheme(),
+                    ),
                   ),
+
+                  SizedBox(height: 10),
+
+                  ListTile(leading: Icon(Icons.logout), title: Text('Logout')),
+
+                  SizedBox(height: 10),
                 ],
               ),
             ),

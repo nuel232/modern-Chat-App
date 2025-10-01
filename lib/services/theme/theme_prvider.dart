@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:modern_chat_app/services/theme/dark_mode.dart';
 import 'package:modern_chat_app/services/theme/light_mode.dart';
 
 class ThemeProvider extends ChangeNotifier {
   //initially start with light
-  ThemeData _themeData = darkMode;
+  ThemeData _themeData = lightMode;
 
   //getter to get the current theme
   ThemeData get themeData => _themeData;
@@ -18,7 +17,7 @@ class ThemeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void ToggleTheme() {
+  void toggleTheme() {
     if (_themeData == lightMode) {
       themeData = darkMode;
     } else {

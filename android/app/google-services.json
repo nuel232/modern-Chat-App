@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "476427672493",
+    "project_id": "morden-chat-app",
+    "storage_bucket": "morden-chat-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476427672493:android:84b3f17089b10377c5df24",
+        "android_client_info": {
+          "package_name": "com.example.modern_chat_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoaW60_w7_xIQv9Qv4vhN0zVXE8hETGcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

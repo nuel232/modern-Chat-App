@@ -17,6 +17,7 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
+      appBar: AppBar(backgroundColor: Colors.transparent),
 
       body: Center(
         child: SafeArea(
@@ -43,7 +44,7 @@ class RegisterPage extends StatelessWidget {
               //email textfield
               MyTextfield(
                 controller: emailController,
-                hint: Text('Email'),
+                hintText: 'Email',
                 obscureText: false,
               ),
 
@@ -52,7 +53,7 @@ class RegisterPage extends StatelessWidget {
               //password textfield
               MyTextfield(
                 controller: passwordController,
-                hint: Text('Password'),
+                hintText: 'Password',
                 obscureText: true,
               ),
 
@@ -61,7 +62,7 @@ class RegisterPage extends StatelessWidget {
               //Confirm password textfield
               MyTextfield(
                 controller: ConfirmPasswordController,
-                hint: Text('Confirm Password'),
+                hintText: 'Confirm Password',
                 obscureText: true,
               ),
 

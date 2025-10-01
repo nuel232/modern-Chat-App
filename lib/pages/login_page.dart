@@ -13,6 +13,7 @@ class LoginPage extends StatelessWidget {
     TextEditingController passwordController = TextEditingController();
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
+      appBar: AppBar(backgroundColor: Colors.transparent),
       body: Center(
         child: SafeArea(
           child: Column(
@@ -38,7 +39,7 @@ class LoginPage extends StatelessWidget {
               //email textfield
               MyTextfield(
                 controller: emailController,
-                hint: Text('Email'),
+                hintText: 'Email',
                 obscureText: false,
               ),
 
@@ -47,7 +48,7 @@ class LoginPage extends StatelessWidget {
               //password textfield
               MyTextfield(
                 controller: passwordController,
-                hint: Text('Password'),
+                hintText: 'Password',
                 obscureText: true,
               ),
 
