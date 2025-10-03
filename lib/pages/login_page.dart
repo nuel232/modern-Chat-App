@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:modern_chat_app/components/my_button.dart';
 import 'package:modern_chat_app/components/my_textfield.dart';
 import 'package:modern_chat_app/services/auth/auth_service.dart';

@@ -1,14 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({super.key});
+  final String receiverEmail;
+  const ChatPage({super.key, required this.receiverEmail});
 
   @override
   Widget build(BuildContext context) {
     final TextEditingController MessageController = TextEditingController();
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.transparent),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: Text(receiverEmail),
+      ),
       body: Center(child: Column(children: [])),
     );
   }

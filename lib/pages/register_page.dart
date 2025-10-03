@@ -16,12 +16,12 @@ class RegisterPage extends StatelessWidget {
 
   void signUp(BuildContext context) {
     //auth serve
-    final _auth = AuthService();
+    final auth = AuthService();
 
     //confirm password are the same
-    if (passwordController == ConfirmPasswordController) {
+    if (passwordController.text == ConfirmPasswordController.text) {
       try {
-        _auth.signUpiWithEmailAndPassword(
+        auth.signUpiWithEmailAndPassword(
           emailController.text,
           passwordController.text,
         );
