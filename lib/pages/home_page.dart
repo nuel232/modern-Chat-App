@@ -34,7 +34,6 @@ class HomePage extends StatelessWidget {
                       size: 70,
                       color: Theme.of(context).colorScheme.surface,
                     ),
-                    // color: Colors.white,
                   ),
 
                   SizedBox(height: 40),
@@ -68,20 +67,23 @@ class HomePage extends StatelessWidget {
               ),
             ),
 
-            //recent chat
-            Container(
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: SliverList(
-                delegate: SliverChildBuilderDelegate((context, index) {
-                  return _buildUserList();
-                }, childCount: 1),
+            //Recent chat header
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(20, 20, 20, 10),
+                child: Text(
+                  'Recent Chats',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
             ),
+
+            //User list
+            _buildUserList(),
           ],
         ),
       ),
@@ -93,18 +95,56 @@ class HomePage extends StatelessWidget {
       stream: _chatService.getUsersStream(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Text('Error');
+          return SliverToBoxAdapter(
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: Text('Error loading users'),
+              ),
+            ),
+          );
         }
 
         //loading
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text('loading');
+          return SliverToBoxAdapter(
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: CircularProgressIndicator(),
+              ),
+            ),
+          );
         }
 
-        return ListView(
-          children: snapshot.data!
-              .map<Widget>((userData) => _buildUserListItem(userData, context))
-              .toList(),
+        // Get the list of users
+        final users = snapshot.data!;
+
+        // If no users, show empty state
+        if (users.isEmpty) {
+          return SliverToBoxAdapter(
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: Text('No users found'),
+              ),
+            ),
+          );
+        }
+
+        // Return a SliverList with users
+        return SliverList(
+          delegate: SliverChildBuilderDelegate((context, index) {
+            return Container(
+              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: _buildUserListItem(users[index], context),
+            );
+          }, childCount: users.length),
         );
       },
     );
@@ -114,7 +154,7 @@ class HomePage extends StatelessWidget {
     Map<String, dynamic> userData,
     BuildContext context,
   ) {
-    //display al users except current user
+    //display all users except current user
     return UserTile(
       text: userData['email'],
       onTap: () {
