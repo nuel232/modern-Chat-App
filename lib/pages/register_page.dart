@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:modern_chat_app/components/my_button.dart';
 import 'package:modern_chat_app/components/my_textfield.dart';
+import 'package:modern_chat_app/services/auth/auth_service.dart';
 
 class RegisterPage extends StatelessWidget {
   final void Function()? onTap;
@@ -13,7 +14,31 @@ class RegisterPage extends StatelessWidget {
   TextEditingController ConfirmPasswordController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  void register() {}
+  void signUp(BuildContext context) {
+    //auth serve
+    final _auth = AuthService();
+
+    //confirm password are the same
+    if (passwordController == ConfirmPasswordController) {
+      try {
+        _auth.signUpiWithEmailAndPassword(
+          emailController.text,
+          passwordController.text,
+        );
+      } catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(title: Text(e.toString())),
+        );
+      }
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) =>
+            AlertDialog(title: Text('Passwords do not match ')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +106,7 @@ class RegisterPage extends StatelessWidget {
                 SizedBox(height: 25),
 
                 //login button
-                MyButton(text: 'Sign Up', onTap: () {}),
+                MyButton(text: 'Sign Up', onTap: () => signUp(context)),
 
                 SizedBox(height: 25),
 

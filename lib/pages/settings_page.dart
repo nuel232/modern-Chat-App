@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:modern_chat_app/services/auth/auth_service.dart';
-import 'package:modern_chat_app/services/theme/theme_prvider.dart';
+import 'package:modern_chat_app/services/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class SettingsPage extends StatelessWidget {
