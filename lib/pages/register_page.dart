@@ -124,10 +124,7 @@ class RegisterPage extends StatelessWidget {
                       onTap: onTap,
                       child: Text(
                         ' Login',
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.onPrimary,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],

@@ -45,19 +45,19 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   ListTile(
                     title: Text('Name'),
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
+                    trailing: Icon(Icons.chevron_right, size: 20),
                   ),
                   SizedBox(height: 10),
 
                   ListTile(
                     title: Text('Email'),
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
+                    trailing: Icon(Icons.chevron_right, size: 20),
                   ),
                   SizedBox(height: 10),
 
                   ListTile(
                     title: Text('phone'),
-                    trailing: Icon(Icons.arrow_forward_ios_rounded),
+                    trailing: Icon(Icons.chevron_right, size: 20),
                   ),
                 ],
               ),

@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:modern_chat_app/components/my_textfield.dart';
@@ -68,22 +67,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
 
-            //Recent chat header
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(20, 20, 20, 10),
-                child: Text(
-                  'Recent Chats',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.onPrimary,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ),
-
-            //User list
+            //User list in container
             _buildUserList(),
           ],
         ),
@@ -133,11 +117,48 @@ class HomePage extends StatelessWidget {
           );
         }
 
-        // Return a SliverList with users
-        return SliverList(
-          delegate: SliverChildBuilderDelegate((context, index) {
-            return _buildUserListItem(users[index], context);
-          }, childCount: users.length),
+        // Filter out current user and build list
+        final filteredUsers = users
+            .where(
+              (userData) =>
+                  userData['email'] != _authService.getCurrentUser()?.email,
+            )
+            .toList();
+
+        if (filteredUsers.isEmpty) {
+          return SliverToBoxAdapter(
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: Text('No other users found'),
+              ),
+            ),
+          );
+        }
+
+        // Return all users in ONE container
+        return SliverToBoxAdapter(
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primary,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: ListView.separated(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.all(10),
+              itemCount: filteredUsers.length,
+              separatorBuilder: (context, index) => Divider(
+                height: 1,
+                thickness: 0.5,
+                color: Theme.of(context).colorScheme.tertiary.withOpacity(0.2),
+              ),
+              itemBuilder: (context, index) {
+                return _buildUserListItem(filteredUsers[index], context);
+              },
+            ),
+          ),
         );
       },
     );
@@ -148,20 +169,16 @@ class HomePage extends StatelessWidget {
     BuildContext context,
   ) {
     //display all users except current user
-    if (userData['email'] != _authService.getCurrentUser()!.email) {
-      return UserTile(
-        text: userData['email'],
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ChatPage(receiverEmail: userData['email']),
-            ),
-          );
-        },
-      );
-    } else {
-      return Container();
-    }
+    return UserTile(
+      text: userData['email'],
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ChatPage(receiverEmail: userData['email']),
+          ),
+        );
+      },
+    );
   }
 }
