@@ -38,7 +38,7 @@ class SettingsPage extends StatelessWidget {
               'Settings',
               style: TextStyle(
                 fontSize: 35,
-                color: Theme.of(context).colorScheme.onPrimary,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
 

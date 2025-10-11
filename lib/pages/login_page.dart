@@ -60,7 +60,7 @@ class LoginPage extends StatelessWidget {
                 Text(
                   'Welcome back,we have missed you',
                   style: TextStyle(
-                    color: Theme.of(context).colorScheme.onPrimary,
+                    color: Theme.of(context).colorScheme.onSurface,
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -96,7 +96,7 @@ class LoginPage extends StatelessWidget {
                       Text(
                         'Forgot Password?',
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.onPrimary,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                       ),
                     ],
@@ -117,7 +117,7 @@ class LoginPage extends StatelessWidget {
                     Text(
                       "Don't have an account?",
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.onPrimary,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
                     GestureDetector(
@@ -125,7 +125,7 @@ class LoginPage extends StatelessWidget {
                       child: Text(
                         ' Register now',
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.onPrimary,
+                          color: Theme.of(context).colorScheme.onSurface,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

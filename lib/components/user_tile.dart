@@ -40,7 +40,7 @@ class UserTile extends StatelessWidget {
             Icon(
               Icons.chevron_right,
               size: 20,
-              color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.5),
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
             ),
           ],
         ),

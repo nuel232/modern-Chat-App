@@ -6,6 +6,8 @@ ThemeData darkMode = ThemeData(
     primary: Color.fromARGB(255, 32, 39, 49),
     tertiary: Color.fromARGB(255, 80, 86, 99),
     secondary: Color.fromARGB(255, 54, 59, 81),
-    onPrimary: Color.fromARGB(255, 118, 127, 137),
+    onSecondary: Colors.white,
+    onPrimary: Color.fromARGB(255, 183, 191, 199),
+    onSurface: Color.fromARGB(255, 118, 127, 137),
   ),
 );

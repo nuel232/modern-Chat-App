@@ -70,7 +70,7 @@ class RegisterPage extends StatelessWidget {
                 Text(
                   'Welcome, You made the right choice',
                   style: TextStyle(
-                    color: Theme.of(context).colorScheme.onPrimary,
+                    color: Theme.of(context).colorScheme.onSurface,
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -117,7 +117,7 @@ class RegisterPage extends StatelessWidget {
                     Text(
                       "Already have an account?",
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.onPrimary,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
                     GestureDetector(

@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
                   Text(
                     'Welcome back,we have missed you',
                     style: TextStyle(
-                      color: Theme.of(context).colorScheme.onPrimary,
+                      color: Theme.of(context).colorScheme.onSurface,
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),
